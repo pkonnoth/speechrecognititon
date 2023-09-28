@@ -1,6 +1,6 @@
-
 import speech_recognition as sr
-import pyttsx3
+from gtts import gTTS
+import os
 import openai
 
 openai.api_key = "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"
@@ -26,22 +26,14 @@ def listen_for_speech():
 
 
 def respond_to_speech(text):
-    """"
-    response = openai.Completion.create(
-        engine="text-davinci-002",
-        prompt='You said: ' + text,
-        max_tokens=1024,
-        n=1,
-        stop=None,
-        temperature=0.5,
-    ).choices[0].text
-    """
-
     print("Assistant: " + text)
-    engine = pyttsx3.init()
-    engine.say(text)
 
-    engine.runAndWait()
+    # Use gTTS to convert the text to speech
+    tts = gTTS(text)
+    tts.save("output.mp3")
+
+    # Play the generated audio using a command-line player (e.g., mpg123)
+    os.system("mpg123 output.mp3")
 
 
 if __name__ == "__main__":
