@@ -8,6 +8,7 @@ click==8.1.7
 frozenlist==1.4.0
 gTTS==2.3.2
 idna==3.4
+keyboard==0.13.5
 multidict==6.0.4
 openai==0.28.1
 PyAudio==0.2.13
